@@ -1,4 +1,4 @@
 picss
 =====
 
-Picss app and website code source
+Picss Android app
