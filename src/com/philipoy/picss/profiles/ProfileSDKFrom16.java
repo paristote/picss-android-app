@@ -16,6 +16,9 @@ private static ProfileSDKFrom16 instance;
 		AUDIO_FORMAT = OutputFormat.MPEG_4; // AAC is only supported in the MP4 container in HTML5
 		                                    // https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats#Browser_compatibility (Notes)
 		TEMP_AUDIO_FILE_EXT = ".mp4";
+		
+		PICSS_BEST_HEIGHT = 450;
+		PICSS_BEST_WIDTH = 800;
 	}
 	
 	public static AbstractProfile getProfile() {

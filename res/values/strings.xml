@@ -3,25 +3,29 @@
 
     <string name="app_name">Picss</string>
     <string name="action_settings">Settings</string>
+    
     <!-- Buttons, Labels, Textfields, ... -->
-    <string name="capture">Start capture</string>
-    <string name="switch_cam">Switch camera</string>
     <string name="picssName">Name</string>
     <string name="picssLabel">Label</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
     <string name="dialog_title">Send your Picss</string>
-    <string name="song_artist_album_name">Song or Album or Artist name</string>
     <string name="search">Search</string>
     
+    <string name="desc_capture">Start capture</string>
+    <string name="desc_mic">Record</string>
+    <string name="desc_switch_cam">Switch camera</string>
+    <string name="desc_start_stop">Start/Stop</string>
+    <string name="desc_song_cover">Song cover</string>
+    
+    
+    <string name="placeholder_search_word">Song or Album or Artist name</string>
+    <string name="placeholder_song_title">Song title</string>
+    <string name="placeholder_song_artist">Famous Artist</string>
     
     <!-- Messages -->
     <string name="sending">The Picss is on its way to the server&#8230;</string>
     <string name="sent_ok">Picss sent to server successfully</string>
     <string name="sent_ko">Could not send the Picss</string>
-    <string name="sec">sec</string>
-    <string name="secs">secs</string>
-    <string name="title_activity_pick_music">PickMusicActivity</string>
-    <string name="hello_world">Hello world!</string>
 
 </resources>

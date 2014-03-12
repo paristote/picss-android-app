@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
+import android.widget.Button;
 
 import com.philipoy.picss.R;
 
@@ -29,7 +30,7 @@ public class PicssDialogFragment extends DialogFragment {
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout
 	    builder.setView(inflater.inflate(R.layout.dialog_picss, null))
-	     .setTitle(R.string.dialog_title)
+//	     .setTitle(R.string.dialog_title)
 	     .setPositiveButton(R.string.send, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -46,7 +47,23 @@ public class PicssDialogFragment extends DialogFragment {
 		});
 		return builder.create();
 	}
-	
+
+
+	@Override
+	public void onStart() {
+		
+		super.onStart();
+		
+		Button posBtn = ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_POSITIVE);
+		Button negBtn = ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEGATIVE);
+		
+		posBtn.setBackgroundResource(R.drawable.picss_dialog_button_positive);
+		negBtn.setBackgroundResource(R.drawable.picss_dialog_button_negative);
+
+	}
+
+
+
 	@Override
 	/**
 	 * Attach this dialog fragment to the activity that created it

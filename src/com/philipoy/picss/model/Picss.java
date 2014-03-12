@@ -2,7 +2,7 @@ package com.philipoy.picss.model;
 
 public class Picss {
 	
-	public byte[] photo;
+	public byte[] photo=null;
 	public byte[] sound=null;
 	public String name;
 	public String label="";

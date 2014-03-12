@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="fill_horizontal"
+    android:descendantFocusability="blocksDescendants" >
+
+    <ImageView
+        android:id="@+id/imgAlbumCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/desc_song_cover"
+        android:layout_margin="8dp"
+        android:src="@drawable/icon_about" />
+
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:layout_toLeftOf="@+id/btnPlayLoadStop"
+        android:layout_toRightOf="@+id/imgAlbumCover"
+        android:text="@string/placeholder_song_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/songArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/songTitle"
+        android:layout_below="@+id/songTitle"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/imgAlbumCover"
+        android:text="@string/placeholder_song_artist"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageButton
+        android:id="@+id/btnPlayLoadStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/desc_start_stop"
+        android:layout_margin="8dp"
+        android:src="@drawable/icon_play" />
+    
+    <ProgressBar
+        android:id="@+id/progressDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignLeft="@+id/btnPlayLoadStop"
+        android:layout_alignTop="@+id/btnPlayLoadStop"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

@@ -1,20 +1,53 @@
-<resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Picss Theme -->
+    
+    <!-- Colors from http://developer.android.com/design/style/color.html  -->
+    <color name="picss_orange_lightest">#FEE9AD</color>
+    <color name="picss_orange_light">#FFBB33</color>
+    <color name="picss_orange_dark">#FF8800</color>
+    <color name="picss_blue_lightest">#DDF1FB</color>
+    <color name="picss_blue_light">#BCE5F8</color>
+    <color name="picss_red_lightest">#FABDBE</color>
+    <color name="picss_green_lightest">#DDEFA0</color>
+    <color name="picss_grey_lightest">#DDDDDD</color>
+    
+    <style name="PicssButton" parent="@android:style/Widget.Button">
+    	<item name="android:background">@drawable/picss_button</item>
+    	<item name="background">@drawable/picss_button</item>
+    	<item name="android:padding">8dp</item>
     </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    
+    <style name="PicssEditText"
+        parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/picss_edit_text</item>
+        <item name="android:padding">8dp</item>
+    </style>
+    
+    <style name="PicssActionBarTitleText"
+           parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/picss_orange_dark</item>
+        <!-- The textColor property is backward compatible with the Support Library -->
+    </style>
+    
+    <style name="PicssActionBar"
+           parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/picss_orange_light</item>
+        <item name="titleTextStyle">@style/PicssActionBarTitleText</item>
+    </style>
+    
+    <style name="PicssTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:buttonStyle">@style/PicssButton</item>
+        <item name="android:imageButtonStyle">@style/PicssButton</item>
+        <item name="android:windowBackground">@drawable/picss_bg_gradient</item>
+        <item name="actionBarStyle">@style/PicssActionBar</item>
+        <item name="actionMenuTextColor">@color/picss_orange_dark</item>
+    </style>
+    
+    <style name="PicssDialogTitle">
+        <item name="android:background">@drawable/picss_dialog_title</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textColor">@color/picss_blue_lightest</item>
     </style>
 
 </resources>

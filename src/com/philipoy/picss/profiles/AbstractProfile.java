@@ -23,6 +23,10 @@ public abstract class AbstractProfile {
 	 */
 	public String TEMP_AUDIO_FILE_EXT;
 	
+	public int PICSS_BEST_HEIGHT;
+	
+	public int PICSS_BEST_WIDTH;
+	
 	/**
 	 * To overwrite in concrete profile classes
 	 * @return the profile object

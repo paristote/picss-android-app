@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- pressed -->
+    <item android:state_pressed="true">
+        <shape>
+	       <solid android:color="@color/picss_orange_light" />
+	       <stroke android:width="2dp"
+	        	   android:color="@color/picss_orange_dark" />
+       </shape>
+    </item>
+    <!-- default -->
+    <item>
+        <shape>
+	       <solid android:color="@color/picss_blue_lightest" />
+	       <stroke android:width="2dp"
+	        	   android:color="@color/picss_orange_dark" />
+	    </shape>
+    </item>
+
+</selector>

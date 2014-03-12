@@ -18,7 +18,7 @@ import com.philipoy.picss.profiles.Constants;
  *
  */
 public class PicssSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
-
+	
 	/**
 	 *  surface holder that displays the preview
 	 */
@@ -102,7 +102,7 @@ public class PicssSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 	        // set the size and finish the camera configuration
 	        if (size!=null) {
 		        parameters.setPreviewSize(size.width, size.height);
-		        parameters.setPictureSize(size.width, size.height);
+		        parameters.setPictureSize(HomeActivity.profile.PICSS_BEST_WIDTH, HomeActivity.profile.PICSS_BEST_HEIGHT);
 		        parameters.setJpegQuality(100);
 	        	camera.setParameters(parameters);
 	        	isCameraConfigured = true;

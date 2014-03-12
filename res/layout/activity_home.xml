@@ -17,13 +17,13 @@
 
     <ImageButton
         android:id="@+id/btn_capture"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/content_new_picture"
-        android:contentDescription="@string/capture"
-      />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp"
+        android:contentDescription="@string/desc_capture"
+        android:src="@drawable/content_new_picture" />
     
     <ImageButton
         android:id="@+id/btn_switch"
@@ -31,7 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:contentDescription="@string/switch_cam"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/desc_switch_cam"
         android:onClick="switchCamera"
         android:src="@drawable/device_access_switch_camera"
         android:visibility="invisible" />
@@ -43,25 +45,19 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:visibility="invisible"
-        android:contentDescription="@string/capture"
+        android:contentDescription="@string/desc_mic"
         android:src="@drawable/device_access_mic" />
 
     <ProgressBar
-        android:id="@+id/progressMic"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/textSeconds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/progressMic"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/progressRec"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/picss_record_progress"
+        android:layout_width="200dp"
+        android:max="2000"
         android:visibility="invisible"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_switch"
+        android:layout_alignBottom="@+id/btn_switch"
+        android:layout_toLeftOf="@+id/btn_switch" />
 
 </RelativeLayout>

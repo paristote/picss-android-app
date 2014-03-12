@@ -7,9 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.hardware.Camera;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
@@ -28,7 +26,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.philipoy.picss.model.Picss;
@@ -47,7 +44,7 @@ import com.philipoy.picss.views.PicssSurfaceView;
  *
  */
 public class HomeActivity extends FragmentActivity implements MediaRecorder.OnErrorListener, PicssDialogListener {
-	
+
 	/**
 	 *  the device profile with options depending on the device and sdk that executes the app
 	 */
@@ -67,7 +64,6 @@ public class HomeActivity extends FragmentActivity implements MediaRecorder.OnEr
 	private ImageButton btnCapture=null;
 	private ImageView imageMic=null;
 	private ProgressBar progressMic=null;
-	private TextView textSeconds=null;
 	/*
 	 *  used to record the audio
 	 */
@@ -90,6 +86,7 @@ public class HomeActivity extends FragmentActivity implements MediaRecorder.OnEr
 	   */
 	  Camera.PictureCallback photoCallback=new Camera.PictureCallback() {
 		    public void onPictureTaken(byte[] data, Camera camera) {
+		    	//TODO save photo on device for local playback
 		    	if (currentPicss != null) { 
 		    		currentPicss.photo = data;
 		    	}
@@ -109,8 +106,7 @@ public class HomeActivity extends FragmentActivity implements MediaRecorder.OnEr
 		
 		preview = (PicssSurfaceView)findViewById(R.id.surfaceView);
 		imageMic = (ImageView)findViewById(R.id.imageMic);
-		progressMic = (ProgressBar)findViewById(R.id.progressMic);
-		textSeconds = (TextView)findViewById(R.id.textSeconds);
+		progressMic = (ProgressBar)findViewById(R.id.progressRec);
 		btnSwitch = (ImageButton)findViewById(R.id.btn_switch);
 		btnCapture = (ImageButton)findViewById(R.id.btn_capture);
 		btnCapture.setOnTouchListener(new OnTouchListener() {
@@ -239,7 +235,7 @@ public class HomeActivity extends FragmentActivity implements MediaRecorder.OnEr
 			  // activity indicator
 			  progressMic.setVisibility(View.VISIBLE);
 			  // counter TODO show a progress bar instead (as in mindie)
-			  counter = new CounterTask(getBaseContext());
+			  counter = new CounterTask();
 			  counter.execute(Integer.valueOf(0));
 			  
 		  }
@@ -383,60 +379,43 @@ public class HomeActivity extends FragmentActivity implements MediaRecorder.OnEr
 	/**
 	 * Counter used to show how many secs of audio are recorded
 	 */
-	private class CounterTask extends AsyncTask<Integer, Integer, Integer> {
+	private class CounterTask extends AsyncTask<Integer, Float, Integer> {
 		
-		private Context c;
 		private boolean shouldContinue = true;
-		
-		public CounterTask(Context ctx) {
-			c = ctx;
-		}
-		
-		@Override
-		protected void onPostExecute(Integer result) {
-			// hides the counter text
-			textSeconds.setVisibility(View.INVISIBLE);
-			super.onPostExecute(result);
-		}
 
 		@Override
-		protected void onProgressUpdate(Integer... values) {
-			int secs = values[0].intValue();
-			if (secs == 1) { // show counter from 1 sec and more
-				textSeconds.setTextColor(Color.BLACK);
-				textSeconds.setVisibility(View.VISIBLE);
-			} else if (secs == 20) { // stop the counter and continue the process at maximum 20 sec
+		protected void onProgressUpdate(Float... values) {
+			float secs = values[0].intValue();
+
+			if (secs >= 20000) { // stop the counter and continue the process at maximum 20 sec
 				endCapture();
 				shouldContinue = false;
 				askPicssNameAndLabel();
 			}
-			if (secs <= 1) textSeconds.setText(secs+" "+c.getString(R.string.sec)); // 0 or 1 sec
-			else { // 2 or more secs
-				if (secs >= 15 && secs < 19) textSeconds.setTextColor(Color.rgb(255, 144, 0)); // orange
-				else if (secs == 19) textSeconds.setTextColor(Color.RED);
-				textSeconds.setText(secs+" "+c.getString(R.string.secs));
-			}
+			// update the progress indicator
+			progressMic.setProgress((int) (secs/10));
+			
 			super.onProgressUpdate(values);
 		}
 
 		@Override
 		protected Integer doInBackground(Integer... params) {
-			int i = params[0].intValue();
+			float time = 0;
 			while (shouldContinue) {
 				// update the counter value in the label
-				publishProgress(Integer.valueOf(i));
+				publishProgress(Float.valueOf(time));
 				try {
-					// wait 1 sec
-					Thread.sleep(1000);
+					// wait 10 ms
+					Thread.sleep(10);
 				} catch (InterruptedException e) {
-					Log.e(Constants.LOG, "Counter thread interrupted at "+i+" secs because of "+e.getMessage(), e);
+					Log.e(Constants.LOG, "Counter thread interrupted at "+time+" secs because of "+e.getMessage(), e);
 				}
-				i++;
+				time += 10;
 			}
-			return Integer.valueOf(i);
+			return Integer.valueOf(0);
 		}
 		// called when the user releases the capture button
-		// stop the counter
+		// stops the counter
 		public void stop() { shouldContinue = false; }
 		
 	}

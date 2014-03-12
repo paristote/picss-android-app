@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Define the progress properties -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="@color/picss_orange_light" />
+            </shape>
+        </clip>
+    </item>
+    
+    <!-- Define the background properties -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke
+        			android:width="2dp"
+        			android:color="@color/picss_orange_dark" />
+        </shape>
+    </item>
+    
+</layer-list>
